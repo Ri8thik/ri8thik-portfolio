@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ri8thik.github.io/ri8thik-portfolio",
+  "homepage": "https://Ri8thik.github.io/ri8thik-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
