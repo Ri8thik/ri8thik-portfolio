@@ -4,8 +4,6 @@ function App() {
   return (
     <>
         <div className="card flex flex-wrap justify-content-center gap-3">
-           
-           I love You Divya
             <Button label="Primary" />
             <Button label="Secondary" severity="secondary" />
             <Button label="Success" severity="success" />
