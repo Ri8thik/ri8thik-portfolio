@@ -1,0 +1,34 @@
+import { useRef, useState, useEffect } from 'react';
+
+interface IntersectionOptions {
+  threshold?: number;
+  rootMargin?: string;
+  triggerOnce?: boolean;
+}
+
+export const useIntersection = (options: IntersectionOptions = {}) => {
+  const { threshold = 0.15, rootMargin = '0px', triggerOnce = true } = options;
+  const ref = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (triggerOnce && ref.current) {
+            observer.unobserve(ref.current);
+          }
+        } else if (!triggerOnce) {
+          setIsVisible(false);
+        }
+      },
+      { threshold, rootMargin }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold, rootMargin, triggerOnce]);
+
+  return { ref, isVisible };
+};
