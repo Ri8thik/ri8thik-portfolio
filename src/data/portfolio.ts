@@ -12,6 +12,7 @@ export interface Project {
   status: 'Live' | 'In Development' | 'Completed';
 }
 
+
 export interface Skill {
   name: string;
   level: number;
