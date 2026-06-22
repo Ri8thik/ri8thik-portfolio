@@ -32,8 +32,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, isDark, toggleTheme }) =
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? isDark
-              ? 'bg-gray-950/90 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl'
-              : 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-lg'
+              ? 'bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/30 shadow-lg shadow-gray-900/20'
+              : 'bg-white/80 backdrop-blur-xl border-b border-gray-200/30 shadow-lg shadow-gray-200/20'
             : 'bg-transparent'
         }`}
         role="navigation"

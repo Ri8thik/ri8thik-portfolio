@@ -42,7 +42,7 @@ const Projects: React.FC<ProjectsProps> = ({ isDark }) => {
   return (
     <section
       id="projects"
-      className={`py-24 relative overflow-hidden ${isDark ? 'bg-gray-950' : 'bg-white'}`}
+      className={`py-32 md:py-40 relative overflow-hidden ${isDark ? 'bg-gray-950' : 'bg-white'}`}
       aria-label="Projects section"
     >
       {/* Background */}
@@ -137,11 +137,11 @@ const Projects: React.FC<ProjectsProps> = ({ isDark }) => {
           Showing <strong className="text-indigo-400">{filteredProjects.length}</strong> of {projects.length} projects
         </p>
 
-        {/* Projects Grid */}
-        <div
-          ref={gridRef as React.RefObject<HTMLDivElement>}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
+       {/* Projects Grid */}
+         <div
+           ref={gridRef as React.RefObject<HTMLDivElement>}
+           className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+         >
           {filteredProjects.length === 0 ? (
             <div className="col-span-2 text-center py-20">
               <span className="text-6xl mb-4 block">🔍</span>

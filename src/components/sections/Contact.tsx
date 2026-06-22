@@ -112,18 +112,18 @@ const Contact: React.FC<ContactProps> = ({ isDark }) => {
     }
   };
 
-  const inputBase = `w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-indigo-500/50 ${
-    isDark
-      ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-indigo-500'
-      : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-indigo-400 focus:bg-white'
-  }`;
+   const inputBase = `w-full px-5 py-3.5 rounded-lg border text-sm outline-none transition-all duration-300 focus:ring-2 focus:ring-indigo-500/50 ${
+     isDark
+       ? 'bg-gray-800/50 border-gray-700/50 text-white placeholder-gray-600 focus:border-indigo-500 focus:bg-gray-800'
+       : 'bg-gray-50/50 border-gray-200/50 text-gray-900 placeholder-gray-500 focus:border-indigo-400 focus:bg-white'
+   }`;
 
   const errorClass = `border-red-500/50 focus:ring-red-500/30 focus:border-red-500`;
 
   return (
     <section
       id="contact"
-      className={`py-24 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}
+      className={`py-32 md:py-40 relative overflow-hidden ${isDark ? 'bg-gray-950' : 'bg-gray-50'}`}
       aria-label="Contact section"
     >
       {/* Background */}

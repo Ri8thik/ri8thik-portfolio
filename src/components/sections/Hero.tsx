@@ -195,10 +195,10 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="animate-slide-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10" style={{ animationDelay: '0.4s', opacity: 0 }}>
+            <div className="animate-slide-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10 w-full sm:w-auto" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 text-sm sm:text-base"
+                className="group relative overflow-hidden px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg sm:shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 text-sm sm:text-base w-full sm:w-auto"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   🚀 Let's Work Together
@@ -209,7 +209,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
               <a
                 href="/resume-rithik-soun.pdf"
                 download
-                className="px-8 py-4 glass border border-white/20 hover:border-white/40 text-white font-bold rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 flex items-center justify-center gap-2 text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="px-6 sm:px-8 py-3.5 sm:py-4 glass border border-white/20 hover:border-white/40 text-white font-bold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 flex items-center justify-center gap-2 text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto"
               >
                 <Download size={18} />
                 Download Resume
@@ -258,7 +258,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                 <div className="px-6 -mt-14 mb-4 flex justify-between items-end">
                   <div className="relative">
                     <div className="w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-gray-900 shadow-2xl">
-                      <img src="/images/profile.jpg" alt="Rithik Soun" className="w-full h-full object-cover" />
+                      <img src="/images/profile.jpg" alt="Rithik Soun" className="w-full h-full object-cover object-top" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-400 border-2 border-gray-900 flex items-center justify-center">
                       <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>

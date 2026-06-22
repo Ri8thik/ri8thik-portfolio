@@ -7,6 +7,7 @@ import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollProgressBar from './components/ScrollProgressBar';
 import LoadingScreen from './components/LoadingScreen';
 import Testimonials from './components/sections/Testimonials';
 import StatsBanner from './components/sections/StatsBanner';
@@ -30,6 +31,9 @@ export default function App() {
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <CustomCursor />
+
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
 
       <div
         className={`min-h-screen transition-colors duration-500 ${

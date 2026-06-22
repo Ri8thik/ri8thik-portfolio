@@ -42,7 +42,7 @@ const About: React.FC<AboutProps> = ({ isDark }) => {
   return (
     <section
       id="about"
-      className={`py-24 relative overflow-hidden ${isDark ? 'bg-gray-950' : 'bg-white'}`}
+      className={`py-32 md:py-40 relative overflow-hidden ${isDark ? 'bg-gray-950' : 'bg-white'}`}
       aria-label="About section"
     >
       {/* Background decoration */}

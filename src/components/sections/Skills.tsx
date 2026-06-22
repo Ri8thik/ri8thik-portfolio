@@ -40,7 +40,7 @@ const Skills: React.FC<SkillsProps> = ({ isDark }) => {
   return (
     <section
       id="skills"
-      className={`py-24 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}
+      className={`py-32 md:py-40 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}
       aria-label="Skills section"
     >
       {/* Background */}
