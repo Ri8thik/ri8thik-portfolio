@@ -39,13 +39,15 @@ export interface TechCategory {
   skills: { name: string; icon: string; level: number }[];
 }
 
+const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export const projects: Project[] = [
   {
     id: 1,
     title: 'Enterprise E-Commerce Dashboard',
     description: 'A full-featured Angular e-commerce management dashboard with real-time analytics, inventory management, and order tracking.',
     longDescription: 'Built a comprehensive enterprise-grade e-commerce admin dashboard using Angular 17 with standalone components. Features real-time data updates via WebSockets, advanced filtering, and data visualization using Chart.js. Integrated with Spring Boot REST APIs and PostgreSQL database.',
-    image: '/images/project1.jpg',
+    image: assetUrl('images/project1.jpg'),
     technologies: ['Angular', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Tailwind CSS', 'PrimeNG', 'RxJS'],
     category: 'Full Stack',
     githubUrl: 'https://github.com/rithiksoun/ecommerce-dashboard',
@@ -67,7 +69,7 @@ export const projects: Project[] = [
     title: 'API Management Portal',
     description: 'A Spring Boot microservices API gateway portal with documentation, testing, and monitoring capabilities.',
     longDescription: 'Developed a comprehensive API management portal that serves as a unified interface for all microservices. Built with Angular frontend and Java Spring Boot backend, featuring API versioning, rate limiting, and comprehensive logging.',
-    image: '/images/project2.jpg',
+    image: assetUrl('images/project2.jpg'),
     technologies: ['Angular', 'Java', 'Spring Boot', 'REST API', 'PostgreSQL', 'TypeScript', 'RxJS'],
     category: 'Backend',
     githubUrl: 'https://github.com/rithiksoun/api-portal',
@@ -89,7 +91,7 @@ export const projects: Project[] = [
     title: 'TaskFlow - Project Management',
     description: 'A Kanban-style project management application with team collaboration, real-time updates, and sprint management.',
     longDescription: 'Created a modern project management tool inspired by Jira and Trello. Features drag-and-drop Kanban boards, sprint planning, team collaboration with real-time notifications, time tracking, and detailed reporting.',
-    image: '/images/project3.jpg',
+    image: assetUrl('images/project3.jpg'),
     technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'PostgreSQL', 'WebSocket'],
     category: 'Full Stack',
     githubUrl: 'https://github.com/rithiksoun/taskflow',
@@ -111,7 +113,7 @@ export const projects: Project[] = [
     title: 'FinTrack Analytics Platform',
     description: 'A real-time financial analytics platform with interactive charts, portfolio tracking, and market insights.',
     longDescription: 'Designed and developed a sophisticated financial analytics platform that provides real-time market data visualization, portfolio performance tracking, and AI-powered insights. Built with Angular and Spring Boot, integrating with third-party financial APIs.',
-    image: '/images/project4.jpg',
+    image: assetUrl('images/project4.jpg'),
     technologies: ['Angular', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'Chart.js', 'RxJS'],
     category: 'Full Stack',
     githubUrl: 'https://github.com/rithiksoun/fintrack',

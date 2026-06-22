@@ -28,6 +28,8 @@ const codeLines = [
   { text: "};", indent: 0 },
 ];
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState('');
@@ -90,7 +92,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
     >
       {/* Hero Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${baseUrl}images/hero-bg.jpg)` }} />
         <div className="absolute inset-0 bg-gradient-to-br from-gray-950/95 via-gray-950/85 to-gray-900/90" />
         <div className="absolute inset-0 bg-grid opacity-20" />
       </div>
@@ -207,7 +209,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
               </button>
 
               <a
-                href="/resume-rithik-soun.pdf"
+                href={`${baseUrl}resume-rithik-soun.pdf`}
                 download
                 className="px-6 sm:px-8 py-3.5 sm:py-4 glass border border-white/20 hover:border-white/40 text-white font-bold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 flex items-center justify-center gap-2 text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto"
               >
@@ -258,7 +260,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                 <div className="px-6 -mt-14 mb-4 flex justify-between items-end">
                   <div className="relative">
                     <div className="w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-gray-900 shadow-2xl">
-                      <img src="/images/profile.jpg" alt="Rithik Soun" className="w-full h-full object-cover object-top" />
+                      <img src={`${baseUrl}images/profile.jpg`} alt="Rithik Soun" className="w-full h-full object-cover object-top" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-400 border-2 border-gray-900 flex items-center justify-center">
                       <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>

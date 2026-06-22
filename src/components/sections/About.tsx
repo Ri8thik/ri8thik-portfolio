@@ -8,6 +8,8 @@ interface AboutProps {
   isDark: boolean;
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const strengthCards = [
   {
     icon: <Code2 size={24} />,
@@ -71,7 +73,7 @@ const About: React.FC<AboutProps> = ({ isDark }) => {
             <div className={`rounded-2xl p-6 mb-6 border ${isDark ? 'bg-gray-900/50 border-gray-700/50' : 'bg-gray-50 border-gray-200'}`}>
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/30">
-                  <img src="/images/profile.jpg" alt="Rithik Soun" className="w-full h-full object-cover" />
+                  <img src={`${baseUrl}images/profile.jpg`} alt="Rithik Soun" className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Rithik Soun</h3>
