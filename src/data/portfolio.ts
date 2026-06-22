@@ -76,6 +76,26 @@ export const heroRoles = [
 
 export const projects: Project[] = [
   {
+    id: 5,
+    title: 'HunarHub - Custom Art Marketplace',
+    description: 'A full-stack PWA marketplace connecting local artists and craftspeople with customers for custom creative work.',
+    longDescription: 'HunarHub is a Progressive Web App built with React 19 and TypeScript to connect skilled artists and craftspeople with customers. It includes customer ordering flows, artist onboarding and dashboards, admin controls, chat, notifications, and mobile install support with service worker and web manifest.',
+    image: assetUrl('images/hunarhub.svg'),
+    technologies: ['React 19', 'TypeScript', 'Vite 7', 'Tailwind CSS v4', 'React Router v7', 'Firebase Auth', 'Firestore', 'Firebase Storage', 'PWA'],
+    category: 'Full Stack',
+    githubUrl: 'https://github.com/Ri8thik/hunarhub',
+    liveUrl: 'https://Ri8thik.github.io/hunarhub',
+    features: [
+      'Customer flows: explore artists, profile view, custom requests, order tracking, chat, notifications, and ratings',
+      'Artist flows: onboarding, profile management, order dashboard, and earnings tracker',
+      'Admin dashboard with secure admin login and platform-level controls',
+      'PWA support: installable on Android/iOS with service worker offline readiness',
+      'Responsive multi-page architecture with reusable components and global app context',
+      'Firebase integration for authentication, data storage, and image storage'
+    ],
+    status: 'Live'
+  },
+  {
     id: 1,
     title: 'Enterprise E-Commerce Dashboard',
     description: 'A full-featured Angular e-commerce management dashboard with real-time analytics, inventory management, and order tracking.',
