@@ -154,7 +154,7 @@ const Contact: React.FC<ContactProps> = ({ isDark }) => {
                 <span className="font-semibold text-green-400">Available for Work</span>
               </div>
               <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                Currently open to full-time positions, freelance projects, and exciting collaborations. Let's build something great together!
+                Currently open to software engineering, frontend, and full-stack opportunities across product and enterprise teams.
               </p>
             </div>
 

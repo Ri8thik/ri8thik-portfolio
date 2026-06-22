@@ -6,15 +6,15 @@ interface StatsBannerProps {
 }
 
 const stats = [
-  { value: 4, suffix: '+', label: 'Years Experience', icon: '⏱️', color: 'from-blue-500 to-indigo-500' },
-  { value: 20, suffix: '+', label: 'Projects Completed', icon: '🚀', color: 'from-indigo-500 to-purple-500' },
-  { value: 15, suffix: '+', label: 'Technologies Mastered', icon: '⚡', color: 'from-purple-500 to-pink-500' },
-  { value: 100, suffix: 'k+', label: 'Lines of Code Written', icon: '💻', color: 'from-pink-500 to-rose-500' },
-  { value: 10, suffix: '+', label: 'Happy Clients', icon: '🌟', color: 'from-rose-500 to-orange-500' },
-  { value: 99, suffix: '%', label: 'Code Quality Score', icon: '✅', color: 'from-orange-500 to-amber-500' },
+  { value: 4.6, suffix: '+', label: 'Years Experience', icon: '⏱️', color: 'from-blue-500 to-indigo-500', decimals: 1 },
+  { value: 5, suffix: '', label: 'Career Roles', icon: '💼', color: 'from-indigo-500 to-purple-500' },
+  { value: 4, suffix: '+', label: 'Major Platforms', icon: '🚀', color: 'from-purple-500 to-pink-500' },
+  { value: 90, suffix: '%+', label: 'Unit Test Coverage', icon: '🧪', color: 'from-pink-500 to-rose-500' },
+  { value: 3, suffix: '+', label: 'Awards & Recognition', icon: '🏅', color: 'from-rose-500 to-orange-500' },
+  { value: 17, suffix: '+', label: 'Angular Versions Covered', icon: '🅰️', color: 'from-orange-500 to-amber-500' },
 ];
 
-function useCountUp(target: number, isVisible: boolean, duration = 2000) {
+function useCountUp(target: number, isVisible: boolean, decimals = 0, duration = 2000) {
   const [count, setCount] = useState(0);
   const animatedRef = useRef(false);
 
@@ -31,13 +31,13 @@ function useCountUp(target: number, isVisible: boolean, duration = 2000) {
           setCount(target);
           clearInterval(timer);
         } else {
-          setCount(Math.floor(current));
+          setCount(decimals > 0 ? Number(current.toFixed(decimals)) : Math.floor(current));
         }
       }, 16);
 
       return () => clearInterval(timer);
     }
-  }, [isVisible, target, duration]);
+  }, [isVisible, target, decimals, duration]);
 
   return count;
 }
@@ -45,7 +45,7 @@ function useCountUp(target: number, isVisible: boolean, duration = 2000) {
 const StatCard: React.FC<{ stat: typeof stats[0]; isDark: boolean; isVisible: boolean; delay: number }> = ({
   stat, isDark, isVisible, delay
 }) => {
-  const count = useCountUp(stat.value, isVisible);
+  const count = useCountUp(stat.value, isVisible, stat.decimals ?? 0);
 
   return (
     <div

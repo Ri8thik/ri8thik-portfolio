@@ -59,7 +59,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <h1 className="text-2xl font-bold text-white mb-1">
           Rithik<span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Soun</span>
         </h1>
-        <p className="text-gray-500 text-sm mb-10">Frontend & Full Stack Developer</p>
+        <p className="text-gray-500 text-sm mb-10">Software Engineer • Full Stack Developer</p>
 
         {/* Progress Bar */}
         <div className="w-64">
@@ -77,7 +77,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
         {/* Skills tags */}
         <div className="flex flex-wrap justify-center gap-2 mt-10 max-w-sm">
-          {['Angular', 'TypeScript', 'Spring Boot', 'Tailwind', 'RxJS'].map((skill, i) => (
+          {['Angular', 'React', 'TypeScript', 'Spring Boot', 'Kafka'].map((skill, i) => (
             <span
               key={skill}
               className="px-3 py-1 rounded-full text-xs font-medium bg-gray-800/80 text-gray-400 border border-gray-700/50 animate-fade-in"

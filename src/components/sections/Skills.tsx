@@ -54,7 +54,7 @@ const Skills: React.FC<SkillsProps> = ({ isDark }) => {
           badge="⚡ Tech Stack"
           title="Skills &"
           highlight="Technologies"
-          subtitle="A comprehensive toolkit of modern technologies I use to build robust, scalable applications."
+          subtitle="A resume-aligned toolkit covering languages, frameworks, backend integrations, developer tools, and delivery practices used in enterprise applications."
           isDark={isDark}
         />
 
@@ -143,16 +143,16 @@ const Skills: React.FC<SkillsProps> = ({ isDark }) => {
             <br />
             <span className="ml-4 text-green-400">primaryStack</span>
             <span className="text-gray-400">: [</span>
-            <span className="text-yellow-300">'Angular'</span>
+             <span className="text-yellow-300">'Angular'</span>
             <span className="text-gray-400">, </span>
-            <span className="text-yellow-300">'TypeScript'</span>
+             <span className="text-yellow-300">'React'</span>
             <span className="text-gray-400">, </span>
-            <span className="text-yellow-300">'Spring Boot'</span>
+             <span className="text-yellow-300">'Spring Boot'</span>
             <span className="text-gray-400">],</span>
             <br />
-            <span className="ml-4 text-green-400">passion</span>
+             <span className="ml-4 text-green-400">focus</span>
             <span className="text-gray-400">: </span>
-            <span className="text-yellow-300">'Building amazing web experiences'</span>
+             <span className="text-yellow-300">'Enterprise products, APIs, and performance'</span>
             <br />
             <span className="text-gray-300">{'}'}</span>
             <span className="text-gray-400">;</span>
@@ -240,18 +240,23 @@ interface AdditionalSkillsProps {
 
 const AdditionalSkills: React.FC<AdditionalSkillsProps> = ({ isDark, isVisible }) => {
   const allSkills = [
-    { name: 'Angular', level: 95, color: 'from-red-500 to-red-600' },
+    { name: 'Angular (2-18)', level: 96, color: 'from-red-500 to-red-600' },
+    { name: 'React', level: 82, color: 'from-cyan-500 to-sky-600' },
     { name: 'TypeScript', level: 92, color: 'from-blue-500 to-blue-600' },
-    { name: 'JavaScript', level: 90, color: 'from-yellow-500 to-yellow-600' },
-    { name: 'HTML5 & CSS3', level: 95, color: 'from-orange-500 to-orange-600' },
+    { name: 'Java', level: 92, color: 'from-amber-600 to-amber-700' },
+    { name: 'Spring Boot', level: 88, color: 'from-green-500 to-green-600' },
+    { name: 'RxJS', level: 90, color: 'from-pink-500 to-pink-600' },
+    { name: 'NgRx', level: 84, color: 'from-fuchsia-500 to-purple-600' },
+    { name: 'HTML5 / CSS3 / SCSS', level: 90, color: 'from-orange-500 to-orange-600' },
     { name: 'Tailwind CSS', level: 88, color: 'from-cyan-500 to-cyan-600' },
-    { name: 'RxJS', level: 82, color: 'from-pink-500 to-pink-600' },
-    { name: 'Java', level: 85, color: 'from-amber-600 to-amber-700' },
-    { name: 'Spring Boot', level: 82, color: 'from-green-500 to-green-600' },
-    { name: 'PostgreSQL', level: 80, color: 'from-indigo-500 to-indigo-600' },
+    { name: 'Redux', level: 76, color: 'from-violet-500 to-violet-700' },
+    { name: 'PostgreSQL', level: 84, color: 'from-indigo-500 to-indigo-600' },
+    { name: 'Redis', level: 74, color: 'from-rose-500 to-red-600' },
+    { name: 'Apache Kafka', level: 76, color: 'from-slate-600 to-slate-800' },
     { name: 'REST APIs', level: 90, color: 'from-purple-500 to-purple-600' },
+    { name: 'Jenkins / CI-CD', level: 82, color: 'from-lime-500 to-green-600' },
     { name: 'Git & GitHub', level: 92, color: 'from-gray-500 to-gray-600' },
-    { name: 'Problem Solving', level: 88, color: 'from-teal-500 to-teal-600' },
+    { name: 'Jest / Jasmine', level: 84, color: 'from-teal-500 to-teal-600' },
   ];
 
   return (

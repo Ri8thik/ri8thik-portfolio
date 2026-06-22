@@ -2,27 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Download, MapPin, Briefcase, Terminal } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { socialLinks } from '../../data/portfolio';
+import { heroRoles, profile, socialLinks } from '../../data/portfolio';
 import { useScrollToSection } from '../../hooks/useScrollSpy';
 
 interface HeroProps {
   isDark?: boolean;
 }
 
-const roles = [
-  'Frontend Developer',
-  'Full Stack Developer',
-  'Angular Specialist',
-  'UI/UX Enthusiast',
-  'Java Spring Boot Dev',
-];
+const roles = heroRoles;
 
 const codeLines = [
   { text: "const developer = {", indent: 0 },
-  { text: "  name: 'Rithik Soun',", indent: 1 },
-  { text: "  role: 'Full Stack Dev',", indent: 1 },
-  { text: "  skills: ['Angular', 'TS', 'Java'],", indent: 1 },
-  { text: "  experience: '4+ years',", indent: 1 },
+  { text: `  name: '${profile.name}',`, indent: 1 },
+  { text: `  role: '${profile.title}',`, indent: 1 },
+  { text: "  skills: ['Angular', 'React', 'Java'],", indent: 1 },
+  { text: `  experience: '${profile.yearsExperience} years',`, indent: 1 },
   { text: "  location: 'Delhi NCR, India',", indent: 1 },
   { text: "  available: true,  // ✅", indent: 1 },
   { text: "};", indent: 0 },
@@ -30,7 +24,7 @@ const codeLines = [
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
+const Hero: React.FC<HeroProps> = ({ isDark = true }) => {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -92,9 +86,18 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
     >
       {/* Hero Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${baseUrl}images/hero-bg.jpg)` }} />
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950/95 via-gray-950/85 to-gray-900/90" />
-        <div className="absolute inset-0 bg-grid opacity-20" />
+        <div
+          className={`absolute inset-0 bg-cover bg-center ${isDark ? 'opacity-100' : 'opacity-35'}`}
+          style={{ backgroundImage: `url(${baseUrl}images/hero-bg.jpg)` }}
+        />
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${
+            isDark
+              ? 'from-gray-950/95 via-gray-950/85 to-gray-900/90'
+              : 'from-white/98 via-white/96 to-indigo-50/92'
+          }`}
+        />
+        <div className={`absolute inset-0 bg-grid ${isDark ? 'opacity-20' : 'opacity-10'}`} />
       </div>
 
       {/* Gradient Orbs */}
@@ -132,28 +135,32 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
           <div className="lg:col-span-7 text-center lg:text-left">
 
             {/* Status Badge */}
-            <div className="animate-slide-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass border border-indigo-500/20 text-sm font-medium mb-8 text-indigo-300">
+            <div className={`animate-slide-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full border text-sm font-medium mb-8 ${
+              isDark
+                ? 'glass border-indigo-500/20 text-indigo-300'
+                : 'glass-light border-indigo-300/70 text-indigo-800 shadow-sm'
+            }`}>
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
               </span>
-              <span>Open to Full-Time & Freelance Opportunities</span>
+              <span>{profile.availability}</span>
             </div>
 
             {/* Greeting */}
             <div className="animate-slide-up" style={{ animationDelay: '0.1s', opacity: 0 }}>
-              <p className="text-gray-400 text-lg mb-2 font-medium">
+              <p className={`text-lg mb-2 font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 Hello, World! <span className="wave-emoji">👋</span>
               </p>
             </div>
 
             {/* Name */}
             <h1 className="animate-slide-up mb-3" style={{ animationDelay: '0.15s', opacity: 0 }}>
-              <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.05]">
+              <span className={`block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 I'm{' '}
                 <span className="relative inline-block">
                   <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
-                    Rithik Soun
+                    {profile.name}
                   </span>
                   {/* Underline decoration */}
                   <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transform scale-x-0 animate-scale-in" style={{ animationDelay: '0.8s', transformOrigin: 'left' }}></span>
@@ -164,36 +171,48 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
             {/* Animated Role */}
             <div className="animate-slide-up mb-6 h-10 sm:h-12 flex items-center justify-center lg:justify-start" style={{ animationDelay: '0.25s', opacity: 0 }}>
               <div className="flex items-center gap-2">
-                <Terminal size={18} className="text-indigo-400 flex-shrink-0" />
-                <span className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-100">
+                <Terminal size={18} className={`flex-shrink-0 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`} />
+                <span className={`text-xl sm:text-2xl md:text-3xl font-semibold ${isDark ? 'text-gray-100' : 'text-gray-800'}`}>
                   {displayText}
-                  <span className="cursor-blink text-indigo-400 ml-0.5">|</span>
+                  <span className={`cursor-blink ml-0.5 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>|</span>
                 </span>
               </div>
             </div>
 
             {/* Meta Tags */}
             <div className="animate-slide-up flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6" style={{ animationDelay: '0.3s', opacity: 0 }}>
-              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-indigo-500/10 border border-indigo-500/20 text-indigo-300`}>
+              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${
+                isDark
+                  ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-300'
+                  : 'bg-indigo-100/90 border border-indigo-200 text-indigo-700'
+              }`}>
                 <Briefcase size={13} />
-                4 Years Experience
+                {profile.yearsExperience} Years Experience
               </span>
-              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-purple-500/10 border border-purple-500/20 text-purple-300`}>
+              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${
+                isDark
+                  ? 'bg-purple-500/10 border border-purple-500/20 text-purple-300'
+                  : 'bg-purple-100/90 border border-purple-200 text-purple-700'
+              }`}>
                 <MapPin size={13} />
                 Delhi NCR, India
               </span>
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-pink-500/10 border border-pink-500/20 text-pink-300">
-                🎯 Angular Expert
+              <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${
+                isDark
+                  ? 'bg-pink-500/10 border border-pink-500/20 text-pink-300'
+                  : 'bg-pink-100/90 border border-pink-200 text-pink-700'
+              }`}>
+                🎯 Angular 2–18 & React
               </span>
             </div>
 
             {/* Description */}
-            <p className="animate-slide-up text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0" style={{ animationDelay: '0.35s', opacity: 0 }}>
-              Crafting <span className="text-indigo-400 font-semibold">blazing-fast</span> Angular applications and{' '}
-              <span className="text-purple-400 font-semibold">robust</span> Spring Boot APIs.
-              Transforming complex ideas into elegant, scalable digital solutions that{' '}
-              <span className="text-pink-400 font-semibold">users love</span> and{' '}
-              <span className="text-green-400 font-semibold">businesses trust</span>.
+            <p className={`animate-slide-up text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 ${isDark ? 'text-gray-300' : 'text-gray-700'}`} style={{ animationDelay: '0.35s', opacity: 0 }}>
+              Software Engineer with <span className="text-indigo-400 font-semibold">4.6+ years</span> of experience building
+              scalable enterprise applications using <span className="text-purple-400 font-semibold">Angular, React, TypeScript, Java</span>,
+              and <span className="text-pink-400 font-semibold">Spring Boot</span>. Focused on clean architecture,
+              API integration, reactive state management, and delivering{' '}
+              <span className="text-green-400 font-semibold">production-ready solutions</span> in Agile teams.
             </p>
 
             {/* CTA Buttons */}
@@ -211,7 +230,11 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
               <a
                 href={`${baseUrl}resume-rithik-soun.pdf`}
                 download
-                className="px-6 sm:px-8 py-3.5 sm:py-4 glass border border-white/20 hover:border-white/40 text-white font-bold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 flex items-center justify-center gap-2 text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto"
+                className={`px-6 sm:px-8 py-3.5 sm:py-4 glass border font-bold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base focus:outline-none focus-visible:ring-2 w-full sm:w-auto ${
+                  isDark
+                    ? 'border-white/20 hover:border-white/40 text-white hover:bg-white/10 focus-visible:ring-white'
+                    : 'border-gray-300 hover:border-gray-400 text-gray-900 hover:bg-white/60 focus-visible:ring-indigo-500'
+                }`}
               >
                 <Download size={18} />
                 Download Resume
@@ -220,7 +243,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
 
             {/* Social Links */}
             <div className="animate-slide-up flex items-center gap-4 justify-center lg:justify-start" style={{ animationDelay: '0.45s', opacity: 0 }}>
-              <span className="text-gray-500 text-sm font-medium">Follow me:</span>
+              <span className={`text-sm font-medium ${isDark ? 'text-gray-500' : 'text-gray-700'}`}>Follow me:</span>
               <div className="flex items-center gap-2">
                 {socialItems.map((social) => (
                   <a
@@ -229,7 +252,11 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                     target={social.href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className={`p-2.5 rounded-xl glass text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/10 hover:border-white/20 ${social.color} focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500`}
+                    className={`p-2.5 rounded-xl glass transition-all duration-300 hover:scale-110 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${social.color} ${
+                      isDark
+                        ? 'text-gray-300 hover:text-white border border-white/10 hover:border-white/20'
+                        : 'text-gray-700 hover:text-white border border-gray-300 hover:border-indigo-300 bg-white/80'
+                    }`}
                   >
                     {social.icon}
                   </a>
@@ -246,7 +273,7 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30 blur-xl"></div>
 
               {/* Card */}
-              <div className="relative glass rounded-3xl border border-white/10 overflow-hidden">
+              <div className={`relative rounded-3xl border overflow-hidden ${isDark ? 'glass border-white/10' : 'glass-light border-gray-300/70'}`}>
                 {/* Card top gradient */}
                 <div className="h-28 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden">
                   <div className="absolute inset-0 bg-noise opacity-30"></div>
@@ -259,10 +286,10 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                 {/* Profile Image */}
                 <div className="px-6 -mt-14 mb-4 flex justify-between items-end">
                   <div className="relative">
-                    <div className="w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-gray-900 shadow-2xl">
+                    <div className={`w-24 h-24 rounded-2xl overflow-hidden ring-4 shadow-2xl ${isDark ? 'ring-gray-900' : 'ring-white'}`}>
                       <img src={`${baseUrl}images/profile.jpg`} alt="Rithik Soun" className="w-full h-full object-cover object-top" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-400 border-2 border-gray-900 flex items-center justify-center">
+                    <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-400 border-2 flex items-center justify-center ${isDark ? 'border-gray-900' : 'border-white'}`}>
                       <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
                     </div>
                   </div>
@@ -275,13 +302,17 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
 
                 {/* Info */}
                 <div className="px-6 pb-5">
-                  <h3 className="text-white font-bold text-lg leading-tight">Rithik Soun</h3>
-                  <p className="text-indigo-400 text-sm font-medium mb-3">Frontend & Full Stack Developer</p>
+                  <h3 className={`font-bold text-lg leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>{profile.name}</h3>
+                  <p className={`text-sm font-medium mb-3 ${isDark ? 'text-indigo-400' : 'text-indigo-700'}`}>{profile.title} • {profile.focus}</p>
 
                   {/* Skills chips */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {['Angular', 'TypeScript', 'Java', 'Spring Boot', 'Tailwind'].map((skill) => (
-                      <span key={skill} className="px-2 py-0.5 rounded-md text-xs bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">
+                    {['Angular', 'React', 'TypeScript', 'Spring Boot', 'Kafka'].map((skill) => (
+                      <span key={skill} className={`px-2 py-0.5 rounded-md text-xs border font-medium ${
+                        isDark
+                          ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20'
+                          : 'bg-indigo-100 text-indigo-700 border-indigo-200'
+                      }`}>
                         {skill}
                       </span>
                     ))}
@@ -290,13 +321,13 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                   {/* Mini stats */}
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { value: '4+', label: 'Years', color: 'text-indigo-400' },
-                      { value: '20+', label: 'Projects', color: 'text-purple-400' },
-                      { value: '10+', label: 'Clients', color: 'text-pink-400' },
+                      { value: '4.6+', label: 'Years', color: 'text-indigo-400' },
+                      { value: '90%+', label: 'Coverage', color: 'text-purple-400' },
+                      { value: '3', label: 'Awards', color: 'text-pink-400' },
                     ].map(stat => (
-                      <div key={stat.label} className="text-center p-2 rounded-xl bg-white/5 border border-white/5">
+                      <div key={stat.label} className={`text-center p-2 rounded-xl border ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-gray-200 shadow-sm'}`}>
                         <div className={`font-black text-base ${stat.color}`}>{stat.value}</div>
-                        <div className="text-gray-500 text-xs">{stat.label}</div>
+                        <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -306,9 +337,9 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
 
             {/* Code Block */}
             <div className="animate-slide-up w-full max-w-sm" style={{ animationDelay: '0.5s', opacity: 0 }}>
-              <div className="glass rounded-2xl border border-white/10 overflow-hidden">
+              <div className={`rounded-2xl border overflow-hidden ${isDark ? 'glass border-white/10' : 'glass-light border-gray-300/70'}`}>
                 {/* Terminal header */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/5">
+                <div className={`flex items-center gap-2 px-4 py-3 border-b ${isDark ? 'border-white/5 bg-white/5' : 'border-gray-200 bg-white/80'}`}>
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
@@ -318,16 +349,16 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
                 <div className="p-4 code-block text-xs leading-7">
                   {codeLines.slice(0, visibleLines).map((line, idx) => (
                     <div key={idx} className="flex">
-                      <span className="text-gray-600 w-5 flex-shrink-0 select-none">{idx + 1}</span>
+                      <span className={`w-5 flex-shrink-0 select-none ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>{idx + 1}</span>
                       <span className="ml-3">
-                        {renderCodeLine(line.text)}
+                        {renderCodeLine(line.text, isDark)}
                       </span>
                     </div>
                   ))}
                   {visibleLines < codeLines.length && (
                     <div className="flex">
-                      <span className="text-gray-600 w-5 flex-shrink-0">{visibleLines + 1}</span>
-                      <span className="ml-3 cursor-blink text-indigo-400">|</span>
+                      <span className={`w-5 flex-shrink-0 ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>{visibleLines + 1}</span>
+                      <span className={`ml-3 cursor-blink ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>|</span>
                     </div>
                   )}
                 </div>
@@ -341,11 +372,13 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <button
           onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center gap-2 text-gray-500 hover:text-indigo-400 transition-colors duration-300 focus:outline-none"
+          className={`flex flex-col items-center gap-2 transition-colors duration-300 focus:outline-none ${
+            isDark ? 'text-gray-500 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'
+          }`}
           aria-label="Scroll to about section"
         >
           <span className="text-xs font-medium">Scroll Down</span>
-          <div className="w-5 h-8 rounded-full border border-gray-700 flex items-start justify-center pt-1">
+          <div className={`w-5 h-8 rounded-full border flex items-start justify-center pt-1 ${isDark ? 'border-gray-700' : 'border-gray-400'}`}>
             <div className="w-1 h-2 rounded-full bg-indigo-400 animate-bounce"></div>
           </div>
         </button>
@@ -354,18 +387,18 @@ const Hero: React.FC<HeroProps> = ({ isDark: _isDark }) => {
   );
 };
 
-function renderCodeLine(text: string): React.ReactNode {
+function renderCodeLine(text: string, isDark: boolean): React.ReactNode {
   // Color different parts of the code
   return text
     .split(/(const|'[^']*'|\btrue\b|\d+|\/\/.*$|[\[\]]|[:,]|\{|\})/)
     .map((part, i) => {
-      if (/^const$/.test(part)) return <span key={i} className="text-purple-400">{part}</span>;
-      if (/^'[^']*'$/.test(part)) return <span key={i} className="text-yellow-300">{part}</span>;
-      if (/^true$/.test(part)) return <span key={i} className="text-green-400">{part}</span>;
-      if (/^\d+$/.test(part)) return <span key={i} className="text-orange-400">{part}</span>;
-      if (/^\/\//.test(part)) return <span key={i} className="text-gray-500 italic">{part}</span>;
-      if (/^[\[\],:{} ]+$/.test(part)) return <span key={i} className="text-gray-400">{part}</span>;
-      return <span key={i} className="text-green-300">{part}</span>;
+      if (/^const$/.test(part)) return <span key={i} className={isDark ? 'text-purple-400' : 'text-purple-700'}>{part}</span>;
+      if (/^'[^']*'$/.test(part)) return <span key={i} className={isDark ? 'text-yellow-300' : 'text-amber-700'}>{part}</span>;
+      if (/^true$/.test(part)) return <span key={i} className={isDark ? 'text-green-400' : 'text-emerald-700'}>{part}</span>;
+      if (/^\d+$/.test(part)) return <span key={i} className={isDark ? 'text-orange-400' : 'text-orange-700'}>{part}</span>;
+      if (/^\/\//.test(part)) return <span key={i} className={isDark ? 'text-gray-500 italic' : 'text-gray-600 italic'}>{part}</span>;
+      if (/^[\[\],:{} ]+$/.test(part)) return <span key={i} className={isDark ? 'text-gray-400' : 'text-gray-700'}>{part}</span>;
+      return <span key={i} className={isDark ? 'text-green-300' : 'text-emerald-700'}>{part}</span>;
     });
 }
 

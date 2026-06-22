@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, MapPin, Phone, Heart, Code2 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { socialLinks, navLinks } from '../data/portfolio';
+import { profile, socialLinks, navLinks } from '../data/portfolio';
 import { useScrollToSection } from '../hooks/useScrollSpy';
 
 interface FooterProps {
@@ -45,8 +45,8 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm mb-6">
-              Frontend & Full Stack Developer passionate about building scalable, performant,
-              and beautiful web applications using Angular, TypeScript, and Java Spring Boot.
+              {profile.title} with 4.6+ years of experience building enterprise applications using Angular,
+              React, TypeScript, Java, Spring Boot, and modern CI/CD engineering practices.
             </p>
             {/* Contact Details */}
             <div className="space-y-2">
@@ -87,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
           <div>
             <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Tech Stack</h3>
             <div className="flex flex-wrap gap-2">
-              {['Angular', 'TypeScript', 'Java', 'Spring Boot', 'Tailwind', 'PostgreSQL', 'RxJS', 'Git'].map((tech) => (
+              {['Angular', 'React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'Kafka', 'Jenkins'].map((tech) => (
                 <span
                   key={tech}
                   className="px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-400 hover:bg-indigo-500/20 hover:text-indigo-400 transition-colors cursor-default border border-gray-700/50 hover:border-indigo-500/30"
@@ -103,7 +103,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                 <span className="text-green-400 text-xs font-semibold">Open to Opportunities</span>
               </div>
-              <p className="text-gray-500 text-xs">Available for full-time roles & freelance projects</p>
+              <p className="text-gray-500 text-xs">Open to software engineering, frontend, and full-stack opportunities</p>
             </div>
           </div>
         </div>

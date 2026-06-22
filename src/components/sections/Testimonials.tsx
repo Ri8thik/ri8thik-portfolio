@@ -2,45 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { useIntersection } from '../../hooks/useIntersection';
 import SectionHeading from '../shared/SectionHeading';
+import { achievements } from '../../data/portfolio';
 
 interface TestimonialsProps {
   isDark: boolean;
 }
 
-const testimonials = [
-  {
-    id: 1,
-    name: 'Arjun Sharma',
-    role: 'CTO, TechCorp Solutions',
-    avatar: '👨‍💼',
-    rating: 5,
-    text: 'Rithik is an exceptional Angular developer. His deep understanding of Angular architecture, TypeScript, and frontend best practices is remarkable. He delivered our enterprise dashboard with outstanding quality and performance.',
-  },
-  {
-    id: 2,
-    name: 'Priya Mehta',
-    role: 'Product Manager, Innovate Digital',
-    avatar: '👩‍💻',
-    rating: 5,
-    text: 'Working with Rithik was a fantastic experience. He not only built our full-stack application from scratch but also provided valuable suggestions on architecture and UX improvements. His Spring Boot APIs are robust and well-documented.',
-  },
-  {
-    id: 3,
-    name: 'Rahul Gupta',
-    role: 'Lead Developer, WebNext Technologies',
-    avatar: '🧑‍🎓',
-    rating: 5,
-    text: 'Rithik has a rare combination of skills - he excels at both frontend Angular development and backend Java Spring Boot. His code is clean, well-tested, and maintainable. Highly recommend for any complex web project.',
-  },
-  {
-    id: 4,
-    name: 'Sneha Patel',
-    role: 'Freelance Client',
-    avatar: '👩‍🎨',
-    rating: 5,
-    text: 'Rithik completely transformed our outdated website into a modern, responsive Angular application. The attention to detail and the quality of the UI components exceeded our expectations. Will definitely work with him again!',
-  },
-];
+const highlights = achievements.map((item, index) => ({
+  id: index + 1,
+  name: item.title,
+  role: item.organization,
+  avatar: index === 0 ? '🏆' : index === 1 ? '⚡' : '📈',
+  rating: 5,
+  text: item.description,
+}));
 
 const Testimonials: React.FC<TestimonialsProps> = ({ isDark }) => {
   const [current, setCurrent] = useState(0);
@@ -56,8 +31,8 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isDark }) => {
     }, 300);
   };
 
-  const prev = () => goTo((current - 1 + testimonials.length) % testimonials.length);
-  const next = () => goTo((current + 1) % testimonials.length);
+  const prev = () => goTo((current - 1 + highlights.length) % highlights.length);
+  const next = () => goTo((current + 1) % highlights.length);
 
   useEffect(() => {
     const timer = setInterval(next, 5000);
@@ -76,10 +51,10 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isDark }) => {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeading
-          badge="💬 Testimonials"
-          title="What People"
-          highlight="Say About Me"
-          subtitle="Feedback from colleagues, managers, and clients I've had the pleasure of working with."
+          badge="🏅 Highlights"
+          title="Career"
+          highlight="Achievements"
+          subtitle="A quick snapshot of measurable wins and recognition from my recent software engineering journey."
           isDark={isDark}
         />
 
@@ -104,26 +79,26 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isDark }) => {
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
-                {[...Array(testimonials[current].rating)].map((_, i) => (
+                {[...Array(highlights[current].rating)].map((_, i) => (
                   <span key={i} className="text-yellow-400 text-xl">⭐</span>
                 ))}
               </div>
 
               {/* Quote text */}
               <blockquote className={`text-lg md:text-xl leading-relaxed mb-8 italic ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                "{testimonials[current].text}"
+                "{highlights[current].text}"
               </blockquote>
 
               {/* Author */}
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl shadow-lg">
-                  {testimonials[current].avatar}
+                  {highlights[current].avatar}
                 </div>
                 <div>
                   <p className={`font-bold text-base ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    {testimonials[current].name}
+                    {highlights[current].name}
                   </p>
-                  <p className="text-indigo-400 text-sm">{testimonials[current].role}</p>
+                  <p className="text-indigo-400 text-sm">{highlights[current].role}</p>
                 </div>
               </div>
             </div>
@@ -133,7 +108,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isDark }) => {
           <div className="flex items-center justify-between">
             {/* Dot indicators */}
             <div className="flex gap-2">
-              {testimonials.map((_, idx) => (
+              {highlights.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => goTo(idx)}

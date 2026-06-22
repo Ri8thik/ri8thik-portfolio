@@ -39,7 +39,40 @@ export interface TechCategory {
   skills: { name: string; icon: string; level: number }[];
 }
 
+export interface Achievement {
+  title: string;
+  organization: string;
+  description: string;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  university: string;
+  period: string;
+  cgpa: string;
+}
+
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+export const profile = {
+  name: 'Rithik Soun',
+  title: 'Software Engineer',
+  focus: 'Full Stack Developer',
+  summary:
+    'Software Engineer with 4.6+ years of experience building scalable, high-performance enterprise applications using Angular, React, TypeScript, Java, and Spring Boot.',
+  yearsExperience: '4.6+',
+  location: 'Delhi NCR, India',
+  availability: 'Open to Full-Time & Freelance Opportunities',
+};
+
+export const heroRoles = [
+  'Software Engineer',
+  'Full Stack Developer',
+  'Angular Developer',
+  'React Developer',
+  'Java Spring Boot Developer',
+];
 
 export const projects: Project[] = [
   {
@@ -134,53 +167,76 @@ export const projects: Project[] = [
 
 export const techCategories: TechCategory[] = [
   {
-    category: 'Frontend',
-    icon: '🎨',
+    category: 'Languages',
+    icon: '💻',
     color: 'from-blue-500 to-indigo-600',
     bgColor: 'bg-blue-500/10',
     skills: [
-      { name: 'Angular', icon: '🅰️', level: 95 },
-      { name: 'TypeScript', icon: '📘', level: 92 },
+      { name: 'Java', icon: '☕', level: 92 },
       { name: 'JavaScript', icon: '🟨', level: 90 },
+      { name: 'TypeScript', icon: '📘', level: 94 },
+      { name: 'Python', icon: '🐍', level: 72 },
       { name: 'HTML5', icon: '🌐', level: 95 },
       { name: 'CSS3', icon: '🎨', level: 90 },
-      { name: 'Tailwind CSS', icon: '💨', level: 88 },
-      { name: 'PrimeNG', icon: '💎', level: 85 },
-      { name: 'RxJS', icon: '🔄', level: 82 },
+      { name: 'SCSS', icon: '🧵', level: 84 },
     ]
   },
   {
-    category: 'Backend',
-    icon: '⚙️',
+    category: 'Frameworks & Tech',
+    icon: '🧩',
     color: 'from-green-500 to-emerald-600',
     bgColor: 'bg-green-500/10',
     skills: [
-      { name: 'Java', icon: '☕', level: 85 },
-      { name: 'Spring Boot', icon: '🍃', level: 82 },
-      { name: 'REST APIs', icon: '🔗', level: 90 },
-      { name: 'Microservices', icon: '🏗️', level: 75 },
+      { name: 'Angular (2-18)', icon: '🅰️', level: 96 },
+      { name: 'React', icon: '⚛️', level: 82 },
+      { name: 'Spring Boot', icon: '🍃', level: 88 },
+      { name: 'RxJS', icon: '🔄', level: 90 },
+      { name: 'NgRx', icon: '🗃️', level: 84 },
+      { name: 'Redux', icon: '🧠', level: 76 },
+      { name: 'Tailwind CSS', icon: '💨', level: 88 },
+      { name: 'Angular Material', icon: '🧱', level: 84 },
+      { name: 'Bootstrap', icon: '🅱️', level: 82 },
+      { name: 'REST APIs', icon: '🔗', level: 92 },
     ]
   },
   {
-    category: 'Database',
+    category: 'Data & Messaging',
     icon: '🗄️',
     color: 'from-orange-500 to-amber-600',
     bgColor: 'bg-orange-500/10',
     skills: [
-      { name: 'PostgreSQL', icon: '🐘', level: 80 },
-      { name: 'SQL', icon: '📊', level: 82 },
+      { name: 'PostgreSQL', icon: '🐘', level: 84 },
+      { name: 'Redis', icon: '🟥', level: 74 },
+      { name: 'Apache Kafka', icon: '📨', level: 76 },
     ]
   },
   {
-    category: 'Tools & DevOps',
+    category: 'Developer Tools',
     icon: '🛠️',
     color: 'from-purple-500 to-violet-600',
     bgColor: 'bg-purple-500/10',
     skills: [
-      { name: 'Git', icon: '🔀', level: 92 },
+      { name: 'Git', icon: '🔀', level: 94 },
       { name: 'GitHub', icon: '🐙', level: 90 },
-      { name: 'VS Code', icon: '💻', level: 95 },
-      { name: 'IntelliJ IDEA', icon: '🧠', level: 85 },
+      { name: 'Jenkins', icon: '🤖', level: 82 },
+      { name: 'Jest', icon: '🧪', level: 78 },
+      { name: 'Jasmine', icon: '🧫', level: 86 },
+      { name: 'Postman', icon: '📮', level: 88 },
+      { name: 'Webpack', icon: '📦', level: 72 },
+      { name: 'NPM', icon: '📦', level: 90 },
+    ]
+  },
+  {
+    category: 'Methodologies',
+    icon: '📐',
+    color: 'from-pink-500 to-rose-600',
+    bgColor: 'bg-pink-500/10',
+    skills: [
+      { name: 'Agile Scrum', icon: '🏃', level: 92 },
+      { name: 'CI/CD', icon: '🔁', level: 86 },
+      { name: 'Responsive Design', icon: '📱', level: 92 },
+      { name: 'Component Architecture', icon: '🧱', level: 90 },
+      { name: 'Performance Optimization', icon: '⚡', level: 88 },
     ]
   }
 ];
@@ -188,68 +244,103 @@ export const techCategories: TechCategory[] = [
 export const experiences: Experience[] = [
   {
     id: 1,
-    role: 'Senior Frontend Developer',
-    company: 'TechCorp Solutions Pvt. Ltd.',
-    period: '2023 – Present',
-    description: 'Leading frontend development for enterprise-grade applications using Angular 17+ with standalone components architecture.',
+    role: 'Software Engineer – Full Stack Developer',
+    company: 'Cotiviti',
+    period: 'Dec 2025 – Present',
+    description: 'Building healthcare claim processing features for the Early Intervention Platform using Angular and Java, supporting 837 Institutional and Professional workflows.',
     achievements: [
-      'Led migration from Angular 12 to Angular 17, improving performance by 40%',
-      'Implemented micro-frontend architecture reducing bundle size by 35%',
-      'Mentored 3 junior developers on Angular best practices',
-      'Integrated PrimeNG component library across 5+ projects'
+      'Engineered claim-processing features for EIP with Angular and Java for 837 Institutional and Professional workflows',
+      'Built reusable UI components with Storybook and Pebble Library and migrated the shared component library from Angular 20 to Angular 21',
+      'Integrated REST APIs with Kafka- and Redis-backed microservices while contributing to CI/CD, code reviews, and production support'
     ],
-    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'PrimeNG', 'RxJS']
+    technologies: ['Angular', 'Java', 'Storybook', 'Kafka', 'Redis', 'REST APIs']
   },
   {
     id: 2,
-    role: 'Full Stack Developer',
-    company: 'Innovate Digital Agency',
-    period: '2022 – 2023',
-    description: 'Developed full-stack web applications using Angular frontend and Java Spring Boot backend with PostgreSQL database.',
+    role: 'Software Engineer – Full Stack Developer',
+    company: 'Relinns Technologies',
+    period: 'Jul 2025 – Dec 2025',
+    description: 'Designed and implemented the Rules module for the Voxloud Contact Center platform across Control Panel and God Panel using Angular and Java REST APIs.',
     achievements: [
-      'Built 8+ production-ready full-stack applications',
-      'Designed RESTful APIs serving 100k+ daily requests',
-      'Reduced API response time by 60% through query optimization',
-      'Implemented JWT authentication & role-based access control'
+      'Built reusable Angular components and optimized RxJS-based state management for faster feature delivery',
+      'Managed Git workflows including pull requests, rebasing, and Jenkins deployments',
+      'Executed Karma/Jasmine testing and supported releases for web and Electron desktop applications'
     ],
-    technologies: ['Angular', 'Java', 'Spring Boot', 'PostgreSQL', 'REST APIs']
+    technologies: ['Angular', 'Java', 'RxJS', 'Jenkins', 'Karma', 'Jasmine', 'Electron']
   },
   {
     id: 3,
-    role: 'Frontend Developer',
-    company: 'WebNext Technologies',
-    period: '2021 – 2022',
-    description: 'Developed responsive web applications and collaborated with UX/UI designers to implement pixel-perfect designs.',
+    role: 'Software Engineer – Frontend Developer',
+    company: 'AutoOne Engineering Services Pvt. Ltd. (Client: Comviva)',
+    period: 'Feb 2025 – May 2025',
+    description: 'Delivered campaign-management features for the Mobilytix platform using React, RxJS, and reusable UI components.',
     achievements: [
-      'Developed 15+ responsive Angular components library',
-      'Improved application load time by 50% using lazy loading',
-      'Implemented comprehensive unit testing with 85% code coverage',
-      'Collaborated with backend team on API integration'
+      'Integrated REST APIs and implemented state management using BehaviorSubject patterns',
+      'Collaborated closely with backend and QA teams to ship stable releases',
+      'Participated in Agile delivery and Jenkins-based CI/CD workflows'
     ],
-    technologies: ['Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'RxJS']
+    technologies: ['React', 'RxJS', 'REST APIs', 'Jenkins', 'BehaviorSubject']
   },
   {
     id: 4,
-    role: 'Junior Web Developer',
-    company: 'StartUp Hub Delhi',
-    period: '2020 – 2021',
-    description: 'Started career building web applications and learning modern development practices and tools.',
+    role: 'Software Engineer – Frontend Developer',
+    company: 'Infogain Private Limited (Client: FedEx)',
+    period: 'May 2022 – Feb 2025',
+    description: 'Enhanced Angular applications across Retail Shipping, Hold Release, and Pre-Metered Shipping modules for FedEx.',
     achievements: [
-      'Built first production Angular application from scratch',
-      'Learned Spring Boot REST API development',
-      'Contributed to open-source projects on GitHub',
-      'Completed Angular and Java certifications'
+      'Integrated REST APIs and barcode scanner devices into production workflows',
+      'Improved application performance while maintaining 90%+ unit test coverage',
+      'Collaborated with cross-functional Agile teams to deliver production-ready features'
     ],
-    technologies: ['Angular', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Git']
+    technologies: ['Angular', 'TypeScript', 'REST APIs', 'Jasmine', 'Barcode Scanner', 'Agile']
+  },
+  {
+    id: 5,
+    role: 'Software Engineer Trainee',
+    company: 'Infogain Private Limited',
+    period: 'Oct 2021 – Apr 2022',
+    description: 'Completed intensive full-stack training in Java, Spring Boot, Angular, SQL, Git, and Agile development.',
+    achievements: [
+      'Built 3+ practice applications using Angular, Java Spring Boot, and REST APIs',
+      'Strengthened core full-stack engineering fundamentals and SDLC understanding',
+      'Prepared for enterprise delivery through hands-on Agile collaboration'
+    ],
+    technologies: ['Java', 'Spring Boot', 'Angular', 'SQL', 'Git', 'REST APIs']
   }
 ];
 
+export const achievements: Achievement[] = [
+  {
+    title: 'Star of the Month',
+    organization: 'Infogain',
+    description: 'Delivered three modules ahead of schedule with zero defects in production.',
+  },
+  {
+    title: 'Spot Award',
+    organization: 'FedEx',
+    description: 'Reduced load time by 25% in the retail shipping application through focused frontend optimization.',
+  },
+  {
+    title: 'Performance Impact',
+    organization: 'Hold Release',
+    description: 'Reduced Hold Release processing time by 30% through coordinated UI and API improvements.',
+  },
+];
+
+export const education: Education = {
+  degree: 'Bachelor of Technology – Computer Science and Engineering',
+  institution: 'Chandigarh Group of Colleges, Jhanjeri',
+  university: 'Punjab Technical University',
+  period: 'Jul 2018 – Aug 2022',
+  cgpa: '7.9 / 10',
+};
+
 export const socialLinks = {
-  github: 'https://github.com/rithiksoun',
-  linkedin: 'https://linkedin.com/in/rithiksoun',
-  email: 'rithiksoun@gmail.com',
+  github: 'https://github.com/Ri8thik',
+  linkedin: 'https://linkedin.com/in/rithik-soun-7abbb31a0',
+  email: 'rithiksoun88@gmail.com',
   instagram: 'https://instagram.com/rithiksoun',
-  phone: '+91 98765 43210',
+  phone: '+91-8607729426',
   location: 'Delhi NCR, India'
 };
 

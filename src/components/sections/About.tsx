@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code2, Zap, Users, Award, BookOpen, MapPin, Mail } from 'lucide-react';
-import { experiences, socialLinks } from '../../data/portfolio';
+import { achievements, education, experiences, profile, socialLinks } from '../../data/portfolio';
 import { useIntersection } from '../../hooks/useIntersection';
 import SectionHeading from '../shared/SectionHeading';
 
@@ -13,26 +13,26 @@ const baseUrl = import.meta.env.BASE_URL;
 const strengthCards = [
   {
     icon: <Code2 size={24} />,
-    title: 'Clean Code',
-    description: 'Writing maintainable, scalable, and well-documented code following industry best practices.',
+    title: 'Enterprise UI Engineering',
+    description: 'Building scalable Angular and React interfaces with reusable components, accessibility, and consistent design systems.',
     color: 'from-blue-500 to-indigo-500',
   },
   {
     icon: <Zap size={24} />,
-    title: 'Performance First',
-    description: 'Optimizing applications for speed, accessibility, and exceptional user experience.',
+    title: 'Performance & Quality',
+    description: 'Improving performance, maintaining 90%+ test coverage, and shipping production-ready features with measurable impact.',
     color: 'from-indigo-500 to-purple-500',
   },
   {
     icon: <Users size={24} />,
-    title: 'Team Player',
-    description: 'Collaborative mindset with excellent communication skills and agile experience.',
+    title: 'API & State Management',
+    description: 'Experienced with REST integrations, RxJS, NgRx, Redux, Kafka-backed services, and clean frontend data flow patterns.',
     color: 'from-purple-500 to-pink-500',
   },
   {
     icon: <Award size={24} />,
-    title: 'Problem Solver',
-    description: 'Breaking down complex problems into simple, elegant, and efficient solutions.',
+    title: 'Agile Delivery Mindset',
+    description: 'Comfortable with CI/CD, code reviews, cross-functional collaboration, production support, and iterative product delivery.',
     color: 'from-pink-500 to-rose-500',
   },
 ];
@@ -76,8 +76,8 @@ const About: React.FC<AboutProps> = ({ isDark }) => {
                   <img src={`${baseUrl}images/profile.jpg`} alt="Rithik Soun" className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
-                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Rithik Soun</h3>
-                  <p className="text-indigo-400 font-medium">Frontend & Full Stack Developer</p>
+                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{profile.name}</h3>
+                  <p className="text-indigo-400 font-medium">{profile.title} • {profile.focus}</p>
                   <div className="flex items-center gap-1 mt-1">
                     <MapPin size={13} className="text-gray-500" />
                     <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{socialLinks.location}</span>
@@ -94,34 +94,33 @@ const About: React.FC<AboutProps> = ({ isDark }) => {
 
             <div className="space-y-4">
               <p className={`text-base leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                👋 Hi! I'm <strong className={isDark ? 'text-white' : 'text-gray-900'}>Rithik Soun</strong>, a dedicated
-                Frontend & Full Stack Developer with <strong className="text-indigo-400">4+ years of professional experience</strong>{' '}
-                building enterprise-grade web applications.
+                👋 Hi! I'm <strong className={isDark ? 'text-white' : 'text-gray-900'}>{profile.name}</strong>, a
+                <strong className="text-indigo-400"> software engineer with 4.6+ years of experience</strong> building
+                scalable, high-performance enterprise applications across frontend and full-stack teams.
               </p>
               <p className={`text-base leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                My core expertise lies in <strong className="text-indigo-400">Angular</strong> (v12-17) with TypeScript,
-                where I've architected and delivered multiple production-grade applications. I'm deeply passionate about
-                creating performant, accessible, and visually stunning user interfaces.
+                My core expertise lies in <strong className="text-indigo-400">Angular (2–18)</strong>, React, and TypeScript,
+                where I've delivered production-grade user interfaces, reusable component systems, and responsive experiences
+                for enterprise products.
               </p>
               <p className={`text-base leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                On the backend, I work with <strong className="text-green-400">Java Spring Boot</strong> to design
-                RESTful APIs and microservices that power scalable applications. I believe in end-to-end ownership and
-                love taking features from concept to production.
+                On the backend, I work with <strong className="text-green-400">Java, Spring Boot, PostgreSQL, Redis, and Kafka</strong>
+                to integrate reliable APIs and microservices. I enjoy taking ownership from design to production support.
               </p>
               <p className={`text-base leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                When I'm not coding, I contribute to open-source, explore new technologies, and mentor junior developers.
-                I'm actively seeking opportunities at <strong className={isDark ? 'text-white' : 'text-gray-900'}>product-based companies</strong>{' '}
-                where I can make a meaningful impact. 🚀
+                I've contributed across healthcare, contact-center, telecom campaign management, and logistics platforms,
+                while working closely with QA, backend, and product teams in <strong className={isDark ? 'text-white' : 'text-gray-900'}>Agile environments</strong>.
+                I’m currently open to impactful software engineering opportunities. 🚀
               </p>
             </div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-4 mt-8">
               {[
-                { label: 'Years Experience', value: '4+', icon: '⏱️' },
-                { label: 'Projects Delivered', value: '20+', icon: '🚀' },
-                { label: 'Technologies', value: '15+', icon: '⚡' },
-                { label: 'Happy Clients', value: '10+', icon: '🌟' },
+                { label: 'Years Experience', value: '4.6+', icon: '⏱️' },
+                { label: 'Core Companies', value: '4', icon: '🏢' },
+                { label: 'Unit Test Coverage', value: '90%+', icon: '🧪' },
+                { label: 'Awards', value: '3', icon: '🏆' },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -190,6 +189,34 @@ const About: React.FC<AboutProps> = ({ isDark }) => {
               {experiences.map((exp, idx) => (
                 <TimelineItem key={exp.id} exp={exp} idx={idx} isDark={isDark} />
               ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8 mt-16">
+          <div className={`rounded-2xl border p-6 ${isDark ? 'bg-gray-900/50 border-gray-700/50' : 'bg-white border-gray-200 shadow-sm'}`}>
+            <h3 className={`text-xl font-bold mb-5 ${isDark ? 'text-white' : 'text-gray-900'}`}>🏅 Achievements</h3>
+            <div className="space-y-4">
+              {achievements.map((item) => (
+                <div key={item.title} className={`rounded-xl border p-4 ${isDark ? 'border-gray-700/60 bg-gray-950/40' : 'border-gray-200 bg-gray-50'}`}>
+                  <p className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.title}</p>
+                  <p className="text-sm text-indigo-400 font-medium mb-1">{item.organization}</p>
+                  <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={`rounded-2xl border p-6 ${isDark ? 'bg-gray-900/50 border-gray-700/50' : 'bg-white border-gray-200 shadow-sm'}`}>
+            <h3 className={`text-xl font-bold mb-5 ${isDark ? 'text-white' : 'text-gray-900'}`}>🎓 Education</h3>
+            <div className={`rounded-xl border p-5 ${isDark ? 'border-gray-700/60 bg-gray-950/40' : 'border-gray-200 bg-gray-50'}`}>
+              <p className={`font-semibold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>{education.degree}</p>
+              <p className="text-indigo-400 font-medium mt-1">{education.institution}</p>
+              <p className={`text-sm mt-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{education.university}</p>
+              <div className="flex flex-wrap gap-3 mt-4 text-sm">
+                <span className={`px-3 py-1 rounded-full ${isDark ? 'bg-indigo-500/10 text-indigo-300' : 'bg-indigo-50 text-indigo-700'}`}>{education.period}</span>
+                <span className={`px-3 py-1 rounded-full ${isDark ? 'bg-green-500/10 text-green-300' : 'bg-green-50 text-green-700'}`}>CGPA: {education.cgpa}</span>
+              </div>
             </div>
           </div>
         </div>
